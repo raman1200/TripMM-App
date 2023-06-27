@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TripMM App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="trip_name"><u>Trip Name</u></string>
+    <string name="total_transaction"><u>Total Transaction</u></string>
+    <string name="total_spend"><u>Total Spend</u></string>
+    <string name="transaction_details"><u>Transaction Details</u></string>
+</resources>

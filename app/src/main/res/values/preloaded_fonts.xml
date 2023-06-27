@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/almendra</item>
+        <item>@font/dm_sans</item>
+        <item>@font/frijole</item>
+        <item>@font/open_sans</item>
+        <item>@font/roboto</item>
+        <item>@font/roboto_italic</item>
+        <item>@font/roboto_mono</item>
+        <item>@font/roboto_mono_italic</item>
+        <item>@font/syncopate_bold</item>
+    </array>
+</resources>
