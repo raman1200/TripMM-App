@@ -5,10 +5,14 @@ import java.util.*
 
 class Constants {
     companion object {
+        val ID = "ID"
         val MYSHAREDPREF = "MY SHARED PREF"
         val TRIPNAME = "TRIPNAME"
-        val TIMESTAMP = "TIMESTAMP"
+        val STARTDATE = "STARTDATE"
+        val ENDDATE = "ENDDATE"
+        val STATUS = "STATUS"
         val MEMBERS = "MEMBERS"
+        val COMPLETED = "completed"
         val M1 ="M1"
         val M2 ="M2"
         val M3 ="M3"

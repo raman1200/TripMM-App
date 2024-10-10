@@ -33,6 +33,10 @@ class MyViewModel(application: Application) : AndroidViewModel(application) {
         repository.insertTrip(data)
     }
 
+    fun deleteAllTransaction() = viewModelScope.launch(Dispatchers.IO) {
+        repository.deleteAllTransaction()
+    }
+
     fun deleteTransaction(data: TransactionData) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteTransaction(data)
     }

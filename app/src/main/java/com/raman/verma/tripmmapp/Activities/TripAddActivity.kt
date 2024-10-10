@@ -38,11 +38,13 @@ class TripAddActivity : AppCompatActivity() {
     private fun setActionBar(){
         setSupportActionBar(binding.toolbar)
         Objects.requireNonNull(supportActionBar)?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setHomeAsUpIndicator(R.drawable.back)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
     }
     private fun clearAll() {
         binding.addLayout.removeAllViews()
         binding.tripName.setText("")
+        binding.tripName.clearFocus()
     }
     private fun clickListeners() {
         binding.addMember.setOnClickListener {
@@ -80,7 +82,7 @@ class TripAddActivity : AppCompatActivity() {
     private fun setDateAndTIme() {
         val date = Date()
         val sdf = SimpleDateFormat("dd MMM, yyyy - hh:mm a")
-        data.timeStamp = sdf.format(date)
+        data.startDate = sdf.format(date)
 
     }
     private fun checkAll() {

@@ -4,12 +4,14 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raman.verma.tripmmapp.Adapters.TripViewAdapter
 import com.raman.verma.tripmmapp.Constants
 import com.raman.verma.tripmmapp.DataClasses.TripData
+import com.raman.verma.tripmmapp.Utils.showDeleteConfirmationDialog
 import com.raman.verma.tripmmapp.ViewModels.MyViewModel
 import com.raman.verma.tripmmapp.databinding.ActivityTripViewBinding
 import java.util.*
@@ -68,11 +70,14 @@ class TripViewActivity : AppCompatActivity(), TripViewAdapter.DeleteIconClick,
     private fun clickListeners() {
         binding.addBtn.setOnClickListener{
             startActivity(Intent(this, TripAddActivity::class.java))
+
         }
     }
 
     override fun onDeleteIconClick(data: TripData) {
-        viewModel.deleteTrip(data)
+        showDeleteConfirmationDialog(this, "Delete Trip", "Are you sure you want to delete this trip?",
+            onConfirm = {viewModel.deleteTrip(data)},
+            onCancel = {})
     }
 
     override fun onItemClick(data: TripData) {
@@ -83,8 +88,11 @@ class TripViewActivity : AppCompatActivity(), TripViewAdapter.DeleteIconClick,
     }
     private fun setEditor(data:TripData) {
         val editor = sharedPref.edit()
+        editor.putInt(Constants.ID, data.id)
         editor.putString(Constants.TRIPNAME, data.tripName)
-        editor.putString(Constants.TIMESTAMP, data.timeStamp)
+        editor.putString(Constants.STARTDATE, data.startDate)
+        editor.putString(Constants.ENDDATE, data.endDate)
+        editor.putString(Constants.STATUS, data.status)
         editor.putInt(Constants.MEMBERS, data.members)
         editor.putString(Constants.M1, data.m1)
         editor.putString(Constants.M2, data.m2)

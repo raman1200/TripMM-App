@@ -21,8 +21,13 @@ class TripViewAdapter(private val context: Context, private val deleteClickIcon:
     override fun onBindViewHolder(holder: TripViewHolder, position: Int) {
         val data = list[position]
         holder.binding.tripName.text = data.tripName
-        holder.binding.time.text = "Starting : ${data.timeStamp}"
+        holder.binding.startDate.text = "Started : ${data.startDate}"
+        if(data.endDate.isNotEmpty()) {
+            holder.binding.endDate.visibility = View.VISIBLE
+            holder.binding.endDate.text = "Ended : ${data.endDate}"
+        }
         holder.binding.members.text = "Members : ${data.members}"
+        holder.binding.status.text = "Status : ${data.status}"
         holder.binding.delete.setOnClickListener {
             deleteClickIcon.onDeleteIconClick(data)
         }

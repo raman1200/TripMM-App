@@ -11,7 +11,9 @@ class TripData() {
     var id:Int = 0
 
     @ColumnInfo var tripName: String = ""
-    @ColumnInfo var timeStamp:String = ""
+    @ColumnInfo var startDate:String = ""
+    @ColumnInfo var endDate:String = ""
+    @ColumnInfo var status:String = "ongoing"
     @ColumnInfo var members :Int = 0
     @ColumnInfo var m1 :String? = null
     @ColumnInfo var m2 :String? = null

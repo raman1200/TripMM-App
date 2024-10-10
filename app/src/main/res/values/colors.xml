@@ -30,6 +30,7 @@
     <color name="grey_400">#9CA9C1</color>
 
     <color name="blue_400">#4D51B6</color>
+    <color name="blue_500">#2B587B</color>
     <color name="blue_600">#150B3D</color>
 
     <color name="grey_600">#524B6B</color>
@@ -38,6 +39,8 @@
 
     <color name="deep_blue">#1E265B</color>
     <color name="dark_grey_500">#161D27</color>
+
+
 
 
 

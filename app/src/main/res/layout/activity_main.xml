@@ -17,31 +17,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tripName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/roboto_mono"
-            android:text="@string/trip_name"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="138dp"
-            tools:layout_editor_absoluteY="8dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/information"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/round_bg_2"
-            android:backgroundTint="#2CFFFFFF"
-            android:padding="6dp"
-            android:src="@drawable/information"
-            app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tripName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="@font/roboto_mono"
+                android:lines="2"
+                android:layout_marginEnd="5dp"
+                android:text="@string/trip_name"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/information"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/information"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/round_bg_2"
+                android:backgroundTint="#2CFFFFFF"
+                android:padding="6dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/information"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -157,7 +169,7 @@
 
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/clear_all_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -176,7 +188,7 @@
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintTop_toBottomOf="@+id/clear_all_btn" />
         <View
             android:layout_width="150dp"
             android:layout_height="1dp"

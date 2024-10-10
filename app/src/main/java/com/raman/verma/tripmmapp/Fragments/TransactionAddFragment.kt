@@ -1,5 +1,6 @@
 package com.raman.verma.tripmmapp.Fragments
 
+import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.raman.verma.tripmmapp.Activities.MainActivity
 import com.raman.verma.tripmmapp.Constants
 import com.raman.verma.tripmmapp.DataClasses.TransactionData
 import com.raman.verma.tripmmapp.DataClasses.TripData
@@ -28,7 +30,7 @@ class TransactionAddFragment : BottomSheetDialogFragment() {
     lateinit var sharedPref:SharedPreferences
     lateinit var tripData: TripData
     private lateinit var paidBy: String
-    lateinit var transactionData: TransactionData
+    var transactionData: TransactionData? = null
     private var timeStamp = ""
 
     override fun onCreateView(
@@ -37,6 +39,16 @@ class TransactionAddFragment : BottomSheetDialogFragment() {
     ): View {
         binding = FragmentTransactionAddBinding.inflate(layoutInflater, container, false)
 
+        arguments?.let {
+            transactionData = arguments?.getParcelable("data")!!
+            binding.apply {
+                description.setText(transactionData!!.description)
+                amount.setText(transactionData!!.amount)
+                heading.setText("Update Transaction")
+                addBtn.setText("Update")
+
+            }
+        }
         init()
         setDateAndTIme()
         getData()
@@ -68,9 +80,19 @@ class TransactionAddFragment : BottomSheetDialogFragment() {
             binding.amount.error = "Please Enter the Amount"
             return
         }
-        transactionData = TransactionData(tripData.tripName, description, timeStamp, paidBy, amount)
-        viewModel.addTransaction(transactionData)
-        Toast.makeText(requireActivity(), "Transaction Added Successfully", Toast.LENGTH_SHORT).show()
+        if(transactionData!=null){
+            transactionData!!.amount = amount
+            transactionData!!.description = description
+            transactionData!!.paidBy = paidBy
+            transactionData!!.timeStamp = timeStamp
+            viewModel.updateTransaction(transactionData!!)
+            Toast.makeText(requireActivity(), "Transaction Updated Successfully", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            transactionData = TransactionData(tripData.tripName, description, timeStamp, paidBy, amount)
+            viewModel.addTransaction(transactionData!!)
+            Toast.makeText(requireActivity(), "Transaction Added Successfully", Toast.LENGTH_SHORT).show()
+        }
         clearAll()
 
     }
@@ -85,18 +107,18 @@ class TransactionAddFragment : BottomSheetDialogFragment() {
         val date = Date()
         val sdf = SimpleDateFormat("dd MMM, yyyy - hh:mm a")
         timeStamp = sdf.format(date)
-
     }
 
     private fun init() {
         tripData = TripData()
         sharedPref = requireActivity().getSharedPreferences(Constants.MYSHAREDPREF, AppCompatActivity.MODE_PRIVATE)
         viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory(requireActivity().application)).get(MyViewModel::class.java)
-
     }
     private fun getData() {
         tripData.tripName = sharedPref.getString(Constants.TRIPNAME, null).toString()
-        tripData.timeStamp = sharedPref.getString(Constants.TIMESTAMP ,null).toString()
+        tripData.startDate = sharedPref.getString(Constants.STARTDATE ,null).toString()
+        tripData.endDate = sharedPref.getString(Constants.ENDDATE ,null).toString()
+        tripData.status = sharedPref.getString(Constants.STATUS ,null).toString()
         tripData.members = sharedPref.getInt(Constants.MEMBERS, -1)
         tripData.m1 = sharedPref.getString(Constants.M1, null)
         tripData.m2 = sharedPref.getString(Constants.M2, null)
@@ -125,7 +147,21 @@ class TransactionAddFragment : BottomSheetDialogFragment() {
         val adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_spinner_dropdown_item, list)
         binding.dropdown.adapter = adapter
 
-
+        list.forEach{
+            if(transactionData!=null){
+                if(it == transactionData!!.paidBy){
+                    binding.dropdown.setSelection(list.indexOf(it))
+                }
+            }
+        }
     }
 
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        val activity = requireActivity()
+        if (activity is MainActivity) {
+            activity.observeData()
+        }
+
+    }
 }

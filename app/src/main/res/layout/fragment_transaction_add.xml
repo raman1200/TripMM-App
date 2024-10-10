@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".Fragments.TransactionAddFragment">
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_mono"
@@ -30,7 +29,7 @@
         android:background="@color/grey_600"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/heading" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +43,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tripNameLayout"
-            style="@style/TextInputLayoutAppearance"
+            style="@style/TextInputLayoutAppearance2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Description"
@@ -97,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:popupBackground="@drawable/round_bg"
-                    android:backgroundTint="@color/black"
+                    android:backgroundTint="@color/cream"
                     android:dropDownWidth="300dp"
                     android:minHeight="50dp"
                     android:popupElevation="20dp" />
@@ -106,7 +105,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/amountLayout"
-                style="@style/TextInputLayoutAppearance"
+                style="@style/TextInputLayoutAppearance2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Enter Amount"
@@ -145,7 +144,6 @@
             android:background="@null"
             android:backgroundTint="@color/green"
             android:text="Add"
-
             android:layout_marginBottom="40dp"
             android:textAllCaps="false"
             android:textColor="@color/white"

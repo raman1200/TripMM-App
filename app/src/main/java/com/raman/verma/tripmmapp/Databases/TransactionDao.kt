@@ -16,6 +16,9 @@ interface TransactionDao {
     @Update
     suspend fun update(transactionData: TransactionData)
 
+    @Query("DELETE FROM transaction_details")
+    suspend fun deleteAll()
+
     @Query("Select * from transaction_details")
     fun getTransactionData() : LiveData<List<TransactionData>>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2B587B"
+    android:background="@color/blue_500"
     tools:context=".Activities.TripViewActivity">
 
     <androidx.appcompat.widget.Toolbar

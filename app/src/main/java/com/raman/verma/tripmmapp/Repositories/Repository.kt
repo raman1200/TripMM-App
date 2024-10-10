@@ -19,6 +19,9 @@ class Repository(private val transactionDao: TransactionDao, private val tripDao
     suspend fun updateTransaction(data: TransactionData) {
         transactionDao.update(data)
     }
+    suspend fun deleteAllTransaction() {
+        transactionDao.deleteAll()
+    }
 
 
     val allTripData: LiveData<List<TripData>> = tripDao.getTripData()

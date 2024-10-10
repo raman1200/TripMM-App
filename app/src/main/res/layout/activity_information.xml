@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cream"
+    android:background="@color/dark_grey_500"
     tools:context=".Activities.InformationActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:elevation="30dp"
         android:background="@drawable/gradient_3"
+        android:backgroundTint="@color/blue_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,18 +29,84 @@
             android:fontFamily="@font/dm_sans"
             android:textSize="24sp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/endTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="End Trip"
+            android:textColor="@color/white"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/dm_sans"
+            android:textSize="18sp"/>
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:orientation="vertical"
         android:background="@drawable/round_bg_2"
+        android:backgroundTint="@color/moon_light"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trip Name :"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+             />
+
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trip Status :"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trip Start Date :"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+             />
+
+        <TextView
+            android:id="@+id/end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trip End Date :"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+             />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/constraint_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/round_bg_2"
+        android:backgroundTint="@color/moon_light"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraint">
 
         <TextView
             android:id="@+id/average"
@@ -48,30 +115,28 @@
             android:text="Average spend Amount is :"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
+
+
         <TextView
             android:id="@+id/transaction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Transaction : "
-            android:layout_marginTop="30dp"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            />
+
         <TextView
             android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Amount Spend : "
-            android:layout_marginTop="60dp"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+             />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -83,6 +148,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraint" />
+        app:layout_constraintTop_toBottomOf="@+id/constraint_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
